@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 33
+    namespace 'com.alexvt.btlightswidget'
+
+    defaultConfig {
+        applicationId "com.alexvt.btlightswidget"
+        minSdkVersion 31
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    Properties signingProperties = new Properties()
+    File signingPropertiesFile = file("../signing.properties")
+    boolean signingPropertiesExist = signingPropertiesFile.exists()
+    if (signingPropertiesExist) signingProperties.load(new FileInputStream(signingPropertiesFile))
+
+    signingConfigs {
+        release {
+            storeFile signingPropertiesExist ? file(signingProperties["signingStoreLocation"]) : null
+            storePassword signingProperties["signingStorePassword"]
+            keyAlias signingProperties["signingKeyAlias"]
+            keyPassword signingProperties["signingKeyPassword"]
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
+
+    implementation("com.juul.kable:core:0.23.0")
+}

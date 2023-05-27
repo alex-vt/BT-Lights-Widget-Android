@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bluetooth_mac_addresses">
+        <!-- example:  <item>01:23:45:AB:CD:EF</item>  -->
+    </string-array>
+</resources>

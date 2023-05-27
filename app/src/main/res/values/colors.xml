@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="selection1of6">#FF0000</color>
+    <color name="selection2of6">#00BBFF</color>
+    <color name="selection3of6">#0000FF</color>
+    <color name="selection4of6">#00FF22</color>
+    <color name="selection5of6">#00FF88</color>
+    <color name="selection6of6">#000000</color>
+</resources>
